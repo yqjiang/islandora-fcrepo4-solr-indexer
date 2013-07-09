@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : config.xml
+    Created on : June 11, 2012, 7:38 PM
+    Author     : rwincewicz
+    Description:
+        Configuration file for php-based listeners.
+-->
+
+<config>
+    
+    <listeners>
+        <!-- Choose the number of child processes you want to spawn. 
+         i    A rough estimate is you'll get a load average which is 
+             1.5 times the number of child processes (eg. load average 
+             of 12 for 8 child processes -->
+        <child_processes>2</child_processes>    
+    </listeners>
+
+    <fedora>
+        <!-- These are the details for your Fedora server. You should
+             make sure that the firewall rules allow the listeners to
+             contact the Fedora server and set up any XACML policies 
+             to allow write access from the listener IP address -->
+        <protocol>http</protocol>
+        <host>ip/ordomin</host>
+        <port>8080</port>
+        <username>fedoraAdmin</username>
+        <password>password</password>
+    </fedora>
+  
+    
+    <stomp>
+        <!-- These are the details for the JMS broker. Usually the host
+             will be the same as the Fedora server. If the Stomp port on
+             the JMS broker has been set up as in the installation 
+             instructions then you'll connect on port 61613 and use the
+             /queue/listener.update channel -->
+        <host>localhost</host>
+        <port>61613</port>
+        <channel>/queue/listener.update</channel>
+    </stomp>
+    
+    
+    <log>
+        <!-- Specify the file name of the log file. -->
+        <file>/var/log/listener.log</file>
+    </log>
+
+</config>
