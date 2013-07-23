@@ -64,7 +64,8 @@ class Connect {
         $message = new Message($this->msg->body);
         $pid = $this->msg->headers['pid'];
         $modMethod = $this->msg->headers['methodName'];
-        $this->log->lwrite("Method: " . $modMethod, 'MODIFY_OBJECT', $pid);
+        $path = $this->msg->headers['path'];
+        $this->log->lwrite("Method: " . $modMethod."Path: ".$path, 'MODIFY_OBJECT', $pid);
         $this->handleMessage($pid, $modMethod);
       }
     }
